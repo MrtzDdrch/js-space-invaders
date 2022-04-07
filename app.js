@@ -87,11 +87,18 @@ function moveInvaders(){
 
     draw();
 
-    // if squares[> 210].classList.contains('invader')
-    // squares[shooterIndex].classList.contains('invader', 'shooter')
-    if(squares[shooterIndex].classList.contains('invader', 'shooter')){
+    // checking for collision between shooter and invaders, game over if so 
+   if(squares[shooterIndex].classList.contains('invader', 'shooter')){
         resultsDisplay.innerHTML = "Game Over";
         clearInterval(invadersId);
+    }
+
+    // loop checks if invaders have moved into the last row of squares at the bottom of the board, game over if so 
+    for(let i = 210; i <= squares.length; i++){
+        if(squares[i].classList.contains('invader')){
+            resultsDisplay.innerHTML = "Game Over";
+            clearInterval(invadersId);
+        }
     }
 
 }
