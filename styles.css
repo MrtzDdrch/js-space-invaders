@@ -19,3 +19,8 @@
 .shooter {
     background-color: red;
 }
+
+.laser {
+    background-color: orange;
+    border-radius: 10px;
+}

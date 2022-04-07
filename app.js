@@ -91,21 +91,58 @@ function moveInvaders(){
    if(squares[shooterIndex].classList.contains('invader', 'shooter')){
         resultsDisplay.innerHTML = "Game Over";
         clearInterval(invadersId);
-    }
+    } 
 
     // loop checks if invaders have moved into the last row of squares at the bottom of the board, game over if so 
-    for(let i = 210; i <= squares.length; i++){
+   for(let i = 210; i <= squares.length; i++){
         if(squares[i].classList.contains('invader')){
             resultsDisplay.innerHTML = "Game Over";
             clearInterval(invadersId);
         }
     }
 
+    // alternative solution for this game over. it works as well, but i do not actually understand why lol
+    /* for(let i = 0; i < alienInvaders.length; i++){
+        if(alienInvaders[i] > 209){
+            resultsDisplay.innerHTML = "Game Over";
+            clearInterval(invadersId);
+        }
+    } */
+
 }
 
 // setting the speed at which the invaders are being moved across the board
 invadersId = setInterval(moveInvaders, 100);
 
+function shoot(e){
+    let laserId;
+    let laserIndex = shooterIndex - width;    
+
+    function checkForHit(){
+        if(squares[laserIndex].classList.contains('invader')){
+            return true;
+        }
+    }
+
+    function moveLaser(){
+        if(checkForHit()){
+            console.log('boom');
+        }else{
+            squares[laserIndex].classList.remove('laser');
+            laserIndex -= width;
+            squares[laserIndex].classList.add('laser');
+        }
+
+    } 
+
+    if(e.keyCode == 32){
+        squares[laserIndex].classList.add('laser');
+
+        setInterval(moveLaser, 20);
+    }
+}
+
+document.addEventListener('keydown', shoot);
 
 
 
