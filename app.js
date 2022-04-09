@@ -94,7 +94,7 @@ function moveInvaders(){
     } 
 
     // loop checks if invaders have moved into the last row of squares at the bottom of the board, game over if so 
-   for(let i = 210; i <= squares.length; i++){
+   for(let i = 210; i < squares.length; i++){
         if(squares[i].classList.contains('invader')){
             resultsDisplay.innerHTML = "Game Over";
             clearInterval(invadersId);
