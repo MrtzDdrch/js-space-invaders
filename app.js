@@ -101,7 +101,8 @@ function moveInvaders(){
         }
     }
 
-    // alternative solution for this game over. it works as well, but i do not actually understand why lol
+    // alternative solution for this game over. it works as well, but i do not actually understand why.
+    // I do not see how alienInvaders[i] could ever be > 209, for the array is looped but has only 40 entries
     /* for(let i = 0; i < alienInvaders.length; i++){
         if(alienInvaders[i] > 209){
             resultsDisplay.innerHTML = "Game Over";
